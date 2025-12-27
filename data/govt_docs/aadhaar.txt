@@ -1,0 +1,18 @@
+Aadhaar is a 12-digit unique identity number issued by the Government of India.
+
+To apply for Aadhaar, a person must visit an authorized Aadhaar enrollment center.
+
+Basic steps:
+1. Visit the nearest Aadhaar enrollment center.
+2. Carry proof of identity and proof of address documents.
+3. Provide biometric details such as fingerprints and iris scan.
+4. After enrollment, an acknowledgment slip is given.
+5. Aadhaar number is generated and sent by post or available online.
+
+Aadhaar enrollment is free of cost.
+
+Official Website:
+https://uidai.gov.in
+
+This information is for public awareness only.
+For official details, visit the UIDAI website.
