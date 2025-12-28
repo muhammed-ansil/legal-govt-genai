@@ -1,5 +1,26 @@
 import streamlit as st
+import os
 import requests
+
+# Backend API URL
+BACKEND_API_URL = os.getenv(
+    "BACKEND_API_URL",
+    "http://127.0.0.1:8000"  # local fallback
+)
+def ask_backend(question: str):
+    try:
+        response = requests.post(
+            f"{BACKEND_API_URL}/ask",
+            json={"question": question},
+            timeout=15
+        )
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException:
+        return {
+            "answer": "Unable to connect to backend API.",
+            "disclaimer": ""
+        }
 
 API_URL = "http://127.0.0.1:8000/ask"
 
@@ -129,48 +150,20 @@ question = st.text_input(
 )
 
 ask_btn = st.button("🚀 Ask", disabled=st.session_state.is_loading)
+if ask_btn:
+    if not question.strip():
+        st.warning("Please enter a question.")
+    else:
+        st.session_state.is_loading = True
+        with st.spinner("Thinking..."):
+            result = ask_backend(question)
+        st.session_state.is_loading = False
 
-# ---------------- API CALL ----------------
-if ask_btn and question.strip() and not st.session_state.is_loading:
-    st.session_state.is_loading = True
+        st.markdown("### Answer")
+        st.write(result.get("answer"))
 
-    with st.spinner("Thinking..."):
-        try:
-            res = requests.post(
-                API_URL,
-                json={"question": question},
-                timeout=120
-            )
-
-            if res.status_code == 200:
-                data = res.json()
-                topic = data.get("topic", "General")
-
-                badge_map = {
-                    "aadhaar": "aadhaar",
-                    "pancard": "pan",
-                    "voterid": "voter",
-                    "firprocedure": "fir",
-                    "consumerrights": "consumer",
-                    "tenantrights": "tenant"
-                }
-
-                st.session_state.chat_history.append({
-                    "question": question,
-                    "answer": data.get("answer", ""),
-                    "topic": topic.upper(),
-                    "badge": badge_map.get(topic, "aadhaar"),
-                    "disclaimer": data.get("disclaimer", "")
-                })
-            else:
-                st.error("Backend error. Please try again.")
-
-        except Exception:
-            st.error("Backend is starting. Please wait a moment.")
-
-        finally:
-            st.session_state.is_loading = False
-            st.rerun()
+        if result.get("disclaimer"):
+            st.caption(result.get("disclaimer"))
 
 # ---------------- FOOTER ----------------
 st.markdown("---")
