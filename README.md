@@ -7,6 +7,26 @@ The system is designed with **strict topic isolation**, **safety constraints**, 
 > ⚠️ This project is for **public information only**. It does **not provide legal advice**.
 
 ---
+## 🌐 Live Demo
+
+- **Frontend (Streamlit UI):**  
+  👉 https://<YOUR-STREAMLIT-APP-URL>
+
+- **Backend (FastAPI – Railway):**  
+  👉 https://<YOUR-RAILWAY-BACKEND-URL>/docs
+
+---
+
+## 🖼️ Screenshots
+
+### Home Interface
+![UI Home](screenshots/ui-home.png)
+
+### Example: Aadhaar Query
+![Aadhaar Answer](screenshots/aadhaar-answer.png)
+
+### Safety Handling (Out-of-Scope Query)
+![Safety Response](screenshots/safety-response.png)
 
 ## 🎯 Key Capabilities
 
