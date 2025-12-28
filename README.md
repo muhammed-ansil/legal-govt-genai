@@ -81,6 +81,36 @@ Local LLM (Ollama – Llama3)
 - Designed for **local execution** without dependency on paid APIs
 
 ---
+## 🔍 Cloud vs Local Execution
+
+This project is intentionally designed with **environment-aware execution**.
+
+### 🖥 Local Mode (Full Capability)
+When running locally:
+- Retrieval-Augmented Generation (RAG) is enabled
+- FAISS vector search loads government & legal documents
+- A local LLM (Ollama – Llama3) generates grounded responses
+- Used for development, testing, and full demonstrations
+
+### ☁️ Cloud Mode (Safe Awareness Mode)
+When deployed to the cloud:
+- The backend runs in **cloud-safe mode**
+- Heavy ML components (FAISS, embeddings, Ollama) are disabled
+- The system returns **verified fallback responses** when no official context is available
+
+### ❓ Why this design?
+- Local LLMs (Ollama) cannot run on typical free cloud platforms
+- Running embeddings and vector stores in the cloud would require paid GPU services
+- To prevent hallucinations, the system is designed to **fail safely rather than fabricate answers**
+
+### ✅ Result
+- No false or misleading information
+- No hallucinated legal advice
+- Clear separation of concerns
+- Production-style architecture with safety guarantees
+
+This approach reflects real-world engineering tradeoffs between
+**cost, reliability, and correctness**.
 
 ## ▶️ Local Setup
 
@@ -138,37 +168,3 @@ Interests: GenAI, RAG Systems, AI Engineering
 
 If this project is useful, feel free to ⭐ the repository.
 
-**STOP COPYING HERE ⬆️**
-
----
-
-## 🧠 SIMPLE RULE (REMEMBER THIS)
-
-> **README = final product description**  
-> **Chat = learning & guidance**
-
-Only the **clean markdown content** belongs in the repo.
-
----
-
-## ✅ WHAT TO DO NOW (SAFE STEPS)
-
-1️⃣ Open `README.md`  
-2️⃣ **Delete everything inside**  
-3️⃣ Paste **only the markdown section above**  
-4️⃣ Save  
-5️⃣ `git add README.md`  
-6️⃣ `git commit -m "Add concise senior-level README"`  
-7️⃣ `git push`
-
----
-
-## 🚀 NEXT (YOUR CHOICE)
-
-Reply with one:
-
-- **`RESUME POINTS`** → Convert this project into strong CV bullets  
-- **`LINKEDIN POST`** → Professional post for recruiters  
-- **`INTERVIEW EXPLANATION`** → How to explain this project clearly  
-
-You’re doing this **the right way** — this level of care is exactly what stands out 👌
