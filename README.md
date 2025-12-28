@@ -20,10 +20,10 @@ The system is designed with **strict topic isolation**, **safety constraints**, 
 ## 🖼️ Screenshots
 
 ### Home Interface
-![UI Home](screenshots/ui-home.png)
+![UI Home](screenshots/UI-home.png)
 
 ### Example: Aadhaar Query
-![Aadhaar Answer](screenshots/aadhaar-answer.png)
+![Aadhaar Answer](screenshots/Aadhaar-answer.png)
 
 ### Safety Handling (Out-of-Scope Query)
 ![Safety Response](screenshots/safety-response.png)
